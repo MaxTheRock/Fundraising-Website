@@ -11,6 +11,7 @@ interface NavigationProps {
 
 export default function Navigation({ onNext, onPrev }: NavigationProps) {
   const [showTooltip, setShowTooltip] = useState(false)
+  const [isSmallScreen, setIsSmallScreen] = useState(false)
 
   const resetTimer = useCallback(() => {
     setShowTooltip(false)
@@ -31,16 +32,26 @@ export default function Navigation({ onNext, onPrev }: NavigationProps) {
 
     events.forEach((event) => document.addEventListener(event, handleUserActivity))
 
+    const handleResize = () => {
+      setIsSmallScreen(window.innerHeight < 868)
+    }
+
+    handleResize() // Initial check
+    window.addEventListener("resize", handleResize)
+
     return () => {
       clearTimeout(timer)
       events.forEach((event) => document.removeEventListener(event, handleUserActivity))
+      window.removeEventListener("resize", handleResize)
     }
   }, [resetTimer])
 
   return (
-    <div className="fixed bottom-8 right-8 flex flex-col items-end z-50">
+    <div
+      className={`fixed ${isSmallScreen ? "bottom-0 left-0 right-0" : "bottom-8 right-8"} flex flex-col items-end z-50`}
+    >
       <AnimatePresence>
-        {showTooltip && (
+        {showTooltip && !isSmallScreen && (
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -56,9 +67,12 @@ export default function Navigation({ onNext, onPrev }: NavigationProps) {
           </motion.div>
         )}
       </AnimatePresence>
-      <motion.div className="bg-white border-2 border-black rounded-xl p-4" whileHover={{ scale: 1.05 }}>
+      <motion.div
+        className={`bg-white border-2 border-black ${isSmallScreen ? "rounded-t-xl w-full" : "rounded-xl"} p-4`}
+        whileHover={isSmallScreen ? {} : { scale: 1.05 }}
+      >
         <div className="text-sm font-bold mb-2 text-center">LET'S MOVE!</div>
-        <div className="flex gap-2">
+        <div className={`flex gap-2 ${isSmallScreen ? "justify-center" : ""}`}>
           <button
             onClick={onPrev}
             className="border-2 border-black rounded-lg p-2 hover:bg-black hover:text-white transition-colors"
@@ -76,3 +90,4 @@ export default function Navigation({ onNext, onPrev }: NavigationProps) {
     </div>
   )
 }
+

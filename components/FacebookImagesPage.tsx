@@ -38,7 +38,7 @@ export default function FacebookImagesPage() {
       transition={pageTransition}
       className="flex-grow flex flex-col justify-center items-center px-6 md:px-8 relative z-[1]"
     >
-      <h1 className="text-4xl md:text-5xl font-black text-center mb-12">
+      <h1 className="text-2xl md:text-3xl font-black text-center mb-12 mt-20">
         Images
       </h1>
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">

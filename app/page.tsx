@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Header from "@/components/Header"
 import ProgressChart from "@/components/ProgressChart"
@@ -14,12 +14,27 @@ import { Button } from "@/components/ui/button"
 import { Share2, DollarSign } from "lucide-react"
 import FacebookImagesPage from "@/components/FacebookImagesPage"
 import { progressValues } from "@/src/config/progressConfig"
+import CoinCollector from "@/components/Coins"
 
 export default function Home() {
   const [currentPage, setCurrentPage] = useState("home")
 
   const activities = progressValues.activities
   const { currentAmount, targetAmount } = progressValues.fundraising
+
+  // Disable scroll when not on the home page
+  useEffect(() => {
+    if (currentPage !== "home") {
+      document.body.style.overflow = "auto"
+    } else {
+      document.body.style.overflow = "hidden"
+    }
+
+    // Clean up: re-enable scroll on component unmount or page change
+    return () => {
+      document.body.style.overflow = "auto"
+    }
+  }, [currentPage])
 
   const pageVariants = {
     initial: { opacity: 0, x: "100%" },
@@ -34,17 +49,17 @@ export default function Home() {
   }
 
   const nextPage = () => {
-    if (currentPage === "home") setCurrentPage("journey")
-    else if (currentPage === "journey") setCurrentPage("about")
-    else if (currentPage === "about") setCurrentPage("facebook")
-    else setCurrentPage("home")
+    setCurrentPage((prev) => 
+      prev === "home" ? "journey" : 
+      prev === "journey" ? "about" : 
+      prev === "about" ? "facebook" : "home")
   }
 
   const prevPage = () => {
-    if (currentPage === "facebook") setCurrentPage("about")
-    else if (currentPage === "about") setCurrentPage("journey")
-    else if (currentPage === "journey") setCurrentPage("home")
-    else setCurrentPage("facebook")
+    setCurrentPage((prev) => 
+      prev === "facebook" ? "about" : 
+      prev === "about" ? "journey" : 
+      prev === "journey" ? "home" : "facebook")
   }
 
   const handleDonateClick = () => {
@@ -53,9 +68,9 @@ export default function Home() {
 
   const handleShareClick = () => {
     const shareData = {
-      title: 'Check this out!',
-      text: 'Here is something interesting I found.',
-      url: 'https://example.com/share'
+      title: 'Share this page with your friends',
+      text: 'Help Max raise funds for his trip to Africa!',
+      url: 'https://bit.ly/maxs-african-adventure'
     }
 
     if (navigator.share) {
@@ -63,7 +78,6 @@ export default function Home() {
         .then(() => console.log('Successful share'))
         .catch((error) => console.error('Error sharing:', error))
     } else {
-      // Fallback for browsers that do not support the Web Share API
       navigator.clipboard.writeText(shareData.url).then(() => {
         alert("URL copied to clipboard!")
       }).catch(err => {
@@ -73,24 +87,24 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen w-full bg-white overflow-hidden relative flex flex-col">
+    <main className="min-h-screen w-full bg-white overflow-hidden relative flex flex-col px-4 md:px-6">
       <CustomCursor />
       <FloatingElements />
       <Header />
-      <div className="absolute top-6 right-6 z-10 flex space-x-3">
+      <div className="absolute top-6 right-4 z-10 flex space-x-2 flex-wrap justify-end">
         <Button
           onClick={handleDonateClick}
-          className="bg-black text-white rounded-full hover:bg-black/90 text-base px-6 py-2"
+          className="bg-black text-white rounded-full hover:bg-black/90 text-lg px-6 py-3 flex items-center md:text-sm md:px-5 md:py-2 sm:text-xs sm:px-3 sm:py-1"
         >
-          <DollarSign className="mr-2 h-5 w-5" />
-          Donate
+          <DollarSign className="mr-1 h-5 w-5 md:h-4 md:w-4 sm:h-3 sm:w-3" /> 
+          <span className="hidden sm:inline md:inline">Donate</span>
         </Button>
         <Button
           onClick={handleShareClick}
-          className="bg-black text-white rounded-full hover:bg-black/90 text-base px-6 py-2"
+          className="bg-black text-white rounded-full hover:bg-black/90 text-lg px-6 py-3 flex items-center md:text-sm md:px-5 md:py-2 sm:text-xs sm:px-3 sm:py-1"
         >
-          <Share2 className="mr-2 h-5 w-5" />
-          Share
+          <Share2 className="mr-1 h-5 w-5 md:h-4 md:w-4 sm:h-3 sm:w-3" /> 
+          <span className="hidden sm:inline md:inline">Share</span>
         </Button>
       </div>
       <AnimatePresence mode="wait">
@@ -102,12 +116,15 @@ export default function Home() {
             exit="out"
             variants={pageVariants}
             transition={pageTransition}
-            className="flex-grow flex flex-col justify-center items-center px-6 md:px-8"
+            className="flex-grow flex flex-col justify-center items-center px-4 md:px-8"
           >
-            <div className="w-full max-w-2xl">
+            <h1 className="text-2xl md:text-3xl font-black text-center mb-12">
+              Goal: Travel distance of largest river in the UK
+            </h1>
+            <div className="w-full max-w-screen-sm">
               <FundraisingProgress current={currentAmount} goal={targetAmount} />
             </div>
-            <div className="mt-12 w-full max-w-2xl">
+            <div className="mt-1 mb-10 w-full max-w-screen-sm">
               <ProgressChart activities={activities} />
             </div>
           </motion.div>
@@ -117,7 +134,7 @@ export default function Home() {
         {currentPage === "facebook" && <FacebookImagesPage />}
       </AnimatePresence>
       <Navigation onNext={nextPage} onPrev={prevPage} />
+      <CoinCollector />
     </main>
   )
 }
-
