@@ -1,9 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
-import React from 'react';
 
-const Header: React.FC = () => {
+export default function Header() {
   return (
     <header className="p-6 md:p-8">
       <motion.h1
@@ -17,7 +16,5 @@ const Header: React.FC = () => {
         MAX'S<br className="block sm:hidden" /> AFRICAN ADVENTURE
       </motion.h1>
     </header>
-  );
-};
-
-export default Header;
+  )
+}

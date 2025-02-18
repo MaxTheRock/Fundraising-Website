@@ -1,9 +1,8 @@
 "use client"
 
-import React from 'react';
 import { motion } from "framer-motion"
 
-const AboutPage: React.FC = () => {
+export default function AboutPage() {
   const pageVariants = {
     initial: { opacity: 0, x: "100%" },
     in: { opacity: 1, x: 0 },
@@ -56,7 +55,5 @@ const AboutPage: React.FC = () => {
       </motion.div>
     </motion.div>
   )
-};
-
-export default AboutPage;
+}
 
