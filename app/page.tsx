@@ -27,7 +27,8 @@ export default function Home() {
     if (currentPage !== "home") {
       document.body.style.overflow = "auto"
     } else {
-      document.body.style.overflow = "hidden"
+      document.body.style.overflow = "idden"
+      window.scrollTo(0, document.body.scrollHeight);
     }
 
     // Clean up: re-enable scroll on component unmount or page change
@@ -118,13 +119,13 @@ export default function Home() {
             transition={pageTransition}
             className="flex-grow flex flex-col justify-center items-center px-4 md:px-8"
           >
-            <h1 className="text-2xl md:text-3xl font-black text-center mb-12">
+            <h1 className="text-2xl md:text-3xl font-black text-center mb-5">
               Goal: Travel distance of largest river in the UK
             </h1>
             <div className="w-full max-w-screen-sm">
               <FundraisingProgress current={currentAmount} goal={targetAmount} />
             </div>
-            <div className="mt-1 mb-10 w-full max-w-screen-sm">
+            <div className="mb-20 w-full max-w-screen-sm">
               <ProgressChart activities={activities} />
             </div>
           </motion.div>

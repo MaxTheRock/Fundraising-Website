@@ -85,7 +85,7 @@ export default function ProgressChart({ activities }: { activities: Activity[] }
           </PieChart>
         </ResponsiveContainer>
       </motion.div>
-      <div className="space-y-3">
+      <div className="space-y-2">
         {activities.map((activity, index) => (
           <motion.div
             key={index}
