@@ -1,17 +1,19 @@
 "use client"
 
 import { motion } from "framer-motion"
+import React from 'react';
 
 interface FundraisingProgressProps {
   current: number
   goal: number
 }
 
-export default function FundraisingProgress({ current, goal }: FundraisingProgressProps) {
+const FundraisingProgress: React.FC<FundraisingProgressProps> = ({ current, goal }) => {
   const progress = (current / goal) * 100
 
   return (
     <div className="w-full">
+      <h2>Fundraising Progress</h2>
       <div className="flex justify-between mb-2 text-xs sm:text-sm">
         <span className="font-bold">FUNDRAISING PROGRESS</span>
         <span className="font-black">
@@ -29,4 +31,6 @@ export default function FundraisingProgress({ current, goal }: FundraisingProgre
     </div>
   )
 }
+
+export default FundraisingProgress;
 
