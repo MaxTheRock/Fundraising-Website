@@ -3,7 +3,6 @@
 import { PieChart, Pie, Cell, ResponsiveContainer, Label } from "recharts"
 import { motion } from "framer-motion"
 import { progressValues } from "@/src/config/progressConfig"
-import React from 'react';
 
 interface Activity {
   name: string
@@ -12,7 +11,7 @@ interface Activity {
   color: string
 }
 
-const ProgressChart: React.FC = ({ activities }: { activities: Activity[] }) => {
+export default function ProgressChart({ activities }: { activities: Activity[] }) {
   // Calculate total completed and remaining
   const totalCompleted = activities.reduce((sum, activity) => sum + activity.current, 0);
   const totalGoalSum = activities.reduce((sum, activity) => sum + activity.goal, 0);
@@ -115,7 +114,5 @@ const ProgressChart: React.FC = ({ activities }: { activities: Activity[] }) => 
       </div>
     </div>
   )
-};
-
-export default ProgressChart;
+}
 
