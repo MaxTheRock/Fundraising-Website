@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground: #000000;
+  --background: #ffffff;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  cursor: none;
+}
+
+.custom-cursor {
+  position: fixed;
+  width: 30px; /* Diameter of the circle */
+  height: 30px; /* Same as width for a perfect circle */
+  pointer-events: none;
+  z-index: 9999;
+
+  /* Circle shape */
+  border-radius: 50%;
+  background-color: white;
+  mix-blend-mode: difference; /* Inverted colors */
+
+  /* Position the cursor exactly where the mouse is */
+  transform: translate(-50%, -50%); /* Centering the circle */
+}
+
+/* Hide the default cursor */
+* {
+  cursor: none !important;
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: none;
+  }
+
+  .custom-cursor {
+    display: none;
+  }
+}
+
