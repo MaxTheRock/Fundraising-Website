@@ -30,13 +30,13 @@ export default function FundraisingNewsCard() {
     description: "Max just completed a 27.6km bike ride to celebrate the new website launch!",
     imageUrl: "/images/facebook/image3.png",
     activityType: "biking",
-    updatedAt: new Date(2025, 1, 18, 10, 8, 21)  // (year, month-1, day, hours, minutes, seconds)
+    updatedAt: new Date(2025, 1, 19, 6, 18, 0)  // (year, month-1, day, hours, minutes, seconds)
   }
 
   const latestDonation: DonationInfo = {
-    name: "Leye & Bob",
-    amount: 25,
-    message: "A very worthy cause Max - go for it!",
+    name: "Parents",
+    amount: 100,
+    message: "Here is a donation for all your hard work. Keep going!",
   }
 
   const activityColors: Record<ActivityType, string> = {
