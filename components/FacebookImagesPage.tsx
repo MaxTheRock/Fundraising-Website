@@ -4,17 +4,24 @@ import { motion } from "framer-motion"
 
 // Define the images array with imports from your specific folder
 const images = [
+  "/images/facebook/image7.jpeg",
+  "/images/facebook/image8.jpeg",
+  "/images/facebook/image9.jpeg",
+  "/images/facebook/image10.jpeg",
+  "/images/facebook/image11.jpeg",
+  "/images/facebook/image12.jpeg",
+  "/images/facebook/image13.jpeg",
+  "/images/facebook/image14.jpeg",
   "/images/facebook/image1.png",
   "/images/facebook/image2.png",
   "/images/facebook/image3.png",
   "/images/facebook/image4.png",
   "/images/facebook/image5.png",
   "/images/facebook/image6.png",
-  // Add more images as needed
 ]
 
 // Define which images are landscape (you can add more as needed)
-const landscapeImages = ["image2.png", "image3.png", "image6.png"]
+const landscapeImages = ["image2.png", "image3.png", "image6.png","image8.png","image11.jpeg"]
 
 export default function FacebookImagesPage() {
   const pageVariants = {

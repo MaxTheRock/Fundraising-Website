@@ -1,6 +1,6 @@
 const activities = [
     { name: "SWIMMING", goal: 59, current: 27.93, color: "#A7C7E7" },
-    { name: "WALKING", goal: 118, current: 0.0, color: "#B6D7A8" },
+    { name: "WALKING", goal: 118, current: 11.52, color: "#B6D7A8" },
     { name: "BIKING", goal: 177, current: 28.6, color: "#D3D3D3" },
 ];
 

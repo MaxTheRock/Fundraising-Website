@@ -26,11 +26,11 @@ export default function FundraisingNewsCard() {
 
   // Sample data - replace with actual data from your source
   const latestNews: NewsItem = {
-    title: "New webstie and more exercise!",
-    description: "Max just completed a 27.6km bike ride to celebrate the new website launch!",
-    imageUrl: "/images/facebook/image3.png",
+    title: "First walk for fundraising!",
+    description: "Max just completed a 11.52km walk to Stoodley Pike!",
+    imageUrl: "/images/facebook/image7.png",
     activityType: "biking",
-    updatedAt: new Date(2025, 1, 19, 6, 18, 0)  // (year, month-1, day, hours, minutes, seconds)
+    updatedAt: new Date(2025, 1, 22, 21, 27, 15)  // (year, month-1, day, hours, minutes, seconds)
   }
 
   const latestDonation: DonationInfo = {

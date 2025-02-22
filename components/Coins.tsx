@@ -17,7 +17,7 @@ interface FloatingText {
   text: string
 }
 
-const SPAWN_INTERVAL = 30000 // New coin every 30 seconds
+const SPAWN_INTERVAL = 35000 // New coin every 35 seconds
 const MAX_COINS = 5
 const COLLECTION_MESSAGES = [
   "Keep pedaling!",
