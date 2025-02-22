@@ -28,7 +28,7 @@ export default function FundraisingNewsCard() {
   const latestNews: NewsItem = {
     title: "First walk for fundraising!",
     description: "Max just completed a 11.52km walk to Stoodley Pike!",
-    imageUrl: "/images/facebook/image7.png",
+    imageUrl: "/images/facebook/image7.jpeg",
     activityType: "biking",
     updatedAt: new Date(2025, 1, 22, 21, 27, 15)  // (year, month-1, day, hours, minutes, seconds)
   }
