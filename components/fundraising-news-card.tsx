@@ -26,17 +26,17 @@ export default function FundraisingNewsCard() {
 
   // Sample data - replace with actual data from your source
   const latestNews: NewsItem = {
-    title: "First walk for fundraising!",
-    description: "Max just completed a 11.52km walk to Stoodley Pike!",
-    imageUrl: "/images/facebook/image7.jpeg",
-    activityType: "biking",
-    updatedAt: new Date(2025, 1, 22, 21, 27, 15)  // (year, month-1, day, hours, minutes, seconds)
+    title: "Brow hike completed!",
+    description: "Max just completed a 30.67km walk with tents and equipment!",
+    imageUrl: "/imageplaceholder",
+    activityType: "walking",
+    updatedAt: new Date(2025, 2, 23, 18, 52, 35)  // (year, month-1, day, hours, minutes, seconds)
   }
 
   const latestDonation: DonationInfo = {
-    name: "Parents",
-    amount: 100,
-    message: "Here is a donation for all your hard work. Keep going!",
+    name: "Grandpa Alexander",
+    amount: 20,
+    message: "As always, good luck ",
   }
 
   const activityColors: Record<ActivityType, string> = {
