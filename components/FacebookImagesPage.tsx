@@ -18,10 +18,14 @@ const images = [
   "/images/facebook/image4.png",
   "/images/facebook/image5.png",
   "/images/facebook/image6.png",
+  "/images/facebook/image15.jpeg",
+  "/images/facebook/image16.jpeg",
+  "/images/facebook/image17.jpeg",
+  "/images/facebook/image18.jpeg",
 ]
 
 // Define which images are landscape (you can add more as needed)
-const landscapeImages = ["image2.png", "image3.png", "image6.png","image8.png","image11.jpeg"]
+const landscapeImages = ["image2.png", "image3.png", "image6.png","image8.png","image11.jpeg","image18.jpeg"]
 
 export default function FacebookImagesPage() {
   const pageVariants = {

@@ -26,17 +26,17 @@ export default function FundraisingNewsCard() {
 
   // Sample data - replace with actual data from your source
   const latestNews: NewsItem = {
-    title: "Brow hike completed!",
-    description: "Max just completed a 30.67km walk with tents and equipment!",
-    imageUrl: "/imageplaceholder",
-    activityType: "walking",
-    updatedAt: new Date(2025, 2, 23, 18, 52, 35)  // (year, month-1, day, hours, minutes, seconds)
+    title: "Part of WYCR!",
+    description: "Max just completed part of the West Yorkshire Cycle Route totaling 27.53km!",
+    imageUrl: "/images/facebook/image15.jpeg",
+    activityType: "biking",
+    updatedAt: new Date(2025, 3, 27, 9, 56, 0)  // (year, month-1, day, hours, minutes, seconds)
   }
 
   const latestDonation: DonationInfo = {
-    name: "Grandpa Alexander",
+    name: "Grandpa",
     amount: 20,
-    message: "As always, good luck ",
+    message: "",
   }
 
   const activityColors: Record<ActivityType, string> = {
